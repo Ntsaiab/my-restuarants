@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const collectionController = require('./controllers/collections');
+const commentsController = require('./controllers/comments')
 const MONGOURI = process.env.MONGODB_URI;
 
 // app.use(cors());
@@ -27,6 +28,7 @@ mongoose.connection.once('open', () => {
 })
 
 app.use('/collections', collectionController);
+app.use('/comments', commentsController);
 
 app.listen(PORT, () => {
     console.log('Keep Calm and Show Trust', PORT, '%');
