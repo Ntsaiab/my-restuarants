@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
-// const collectionController = require('./controllers/collections')
+const collectionController = require('./controllers/collections');
 const MONGOURI = process.env.MONGODB_URI;
 
 // app.use(cors());
@@ -26,7 +26,7 @@ mongoose.connection.once('open', () => {
     console.log('Connected, United and Protected')
 })
 
-// app.use('/collections', collectionController);
+app.use('/collections', collectionController);
 
 app.listen(PORT, () => {
     console.log('Keep Calm and Show Trust', PORT, '%');
