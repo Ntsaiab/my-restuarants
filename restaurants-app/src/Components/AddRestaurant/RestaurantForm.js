@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';// need to fix update route and button
 
 
 export default (props) => {
@@ -12,20 +12,7 @@ export default (props) => {
 
     const [collections, setCollections] = useState([])
 
-  // READ
-  const fetchCollections = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/collections')
-      const data = await response.json();
-      setCollections(data)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  
-
-    // CREATE
+   // CREATE
     const createCollection = async (event) => {
         event.preventDefault()
         const name = nameInput.current.value
@@ -52,6 +39,35 @@ export default (props) => {
             data])
             
             console.log(event.target)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    
+    // READ
+  const fetchCollections = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/collections')
+      const data = await response.json();
+      setCollections(data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+    // UPDATE
+    const updateCollection = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:3000/collections/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({url: "google.com"})
+        })
+            const data = await response.json();
+            const filteredCollections = collections.filter(collection => collection._id !== data._id)
+            setCollections(filteredCollections);
         } catch (error) {
             console.error(error)
         }
@@ -101,7 +117,12 @@ export default (props) => {
                             deleteCollection(collection._id)
                         }
                     }>Delete {collection.name}</button>
-                    </li>
+                    <button onClick={
+                        (event) => {
+                            updateCollection(collection._id)
+                        }
+                    }>Update {collection.name}</button> <br />
+                    </li> 
                 )
                 })
             }

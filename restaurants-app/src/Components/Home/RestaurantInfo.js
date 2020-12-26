@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react'; // Need to add code for searching on homepage
 
 const PullBackend = (props) => {
     const [collections, setCollections] = useState([]);
+    const searchInput = useRef(null);
     
     const fetchCollections = async () => {
         try {
@@ -19,12 +20,19 @@ const PullBackend = (props) => {
     }, [])
 
 
+    // MyModel.find({ name: new RegExp('john', 'i') }, null).exec();
+
     return (
         
         <>
+            <form>
+                <label> Search: <input type="text" ref={searchInput}></input></label>
+                <input type='submit'></input>
+            </form>
             {
                 collections.map(collection => {
-                    return <h3>{collection.name}, {collection.city}, {collection.dish}</h3>
+                    return <h3>Name: {collection.name}, City: {collection.city}, Zip: {collection.zip}, <br />
+                    Cuisine: {collection.culture}, Dish: {collection.dish}, Ruleout: {collection.ruleout}</h3>
                 })
             }
         </>
