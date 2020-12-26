@@ -36,4 +36,20 @@
     transform: rotate(360deg);
   }
 }
+/* nav {
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: top;
+  padding: 0 20px;
+} */
 
+:link {
+  text-decoration: none;
+  color: whitesmoke;
+  /* padding: 1px 10px; */
+  border: 2px olivedrab;
+  text-align: center;
+  display: inline;
+}

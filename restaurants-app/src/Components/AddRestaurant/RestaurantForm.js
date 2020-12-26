@@ -80,20 +80,22 @@ export default (props) => {
 
     return (
         <>
+            <h3>Was it good! Add your fav Restaurant location and dish on this page!</h3>
+            <br />
             <form className="collectionsForm" onSubmit={createCollection}>
-            <label> Name: <input type="text" ref={nameInput} /></label>  <br />
-            <label> City: <input type="text" ref={cityInput} /></label>  <br /> 
-            <label> Zip: <input type="text" ref={zipInput} /></label> <br />
-            <label> Culture: <input type="text" ref={cultureInput} /></label>  <br />
-            <label> Dish: <input type="text" ref={dishInput} /></label>  <br /> 
-            <label> Ruleout: <input type="text" ref={ruleoutInput} /></label> <br />
+            <label> Name: <input type="text" ref={nameInput} /> </label>  
+            <label> City: <input type="text" ref={cityInput} /> </label>   
+            <label> Zip: <input type="text" ref={zipInput} /> </label> <br />
+            <label> Culture: <input type="text" ref={cultureInput} /> </label>  
+            <label> Dish: <input type="text" ref={dishInput} /> </label>  
+            <label> Ruleout: <input type="text" ref={ruleoutInput} /> </label> 
                 <input type="submit" value="Add A Restaurant" />  
-            </form>
+            </form><br />
             
             {
                 collections.map(collection => {
                 return (
-                    <li key={collection._id}>{collection.name} <br />
+                    <li key={collection._id}>{collection.name}
                     <button onClick={
                         (event) => {
                             deleteCollection(collection._id)
