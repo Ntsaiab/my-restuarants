@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';// need to fix update route and button
+import { useState, useEffect, useRef } from 'react';// need to fix update route and button, create a separate form
 
 
 export default (props) => {
@@ -63,7 +63,7 @@ export default (props) => {
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({url: "google.com"})
+            // body: body = error body is not defined
         })
             const data = await response.json();
             const filteredCollections = collections.filter(collection => collection._id !== data._id)
