@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from 'react'; // Need to add code for searching on homepage
+import { useState, useEffect, useRef } from 'react'; // Need to add code for location button for search results and link to goole maps if have time
+import { Route, Link, Switch } from 'react-router-dom';
+
 
 const PullBackend = (props) => {
     const [collections, setCollections] = useState([]);
@@ -49,10 +51,14 @@ const handleFilter = (e) => {
                 filteredItems.length > 1 ? 
                 filteredItems.map(collection => {
                     return (
-                    <div key={collections._id}>
+                        <>
+                    <Link to="/UpdateRestaurant"><div key={collections._id}>
                     <h3>Name: {collection.name}, City: {collection.city}, Zip: {collection.zip}, <br />
                     Cuisine: {collection.culture}, Dish: {collection.dish}, Ruleout: {collection.ruleout}</h3>
                     </div>
+                    </Link>
+                    
+                    </>
                     )
                 }) : 
                 (<div>Search for what you need to ruleout of your meal!</div>)

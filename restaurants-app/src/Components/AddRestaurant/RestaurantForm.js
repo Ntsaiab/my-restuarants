@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';// need to fix update route and button, create a separate form
+import { Route, Link, Switch } from 'react-router-dom';
 
 
 export default (props) => {
@@ -34,8 +35,8 @@ export default (props) => {
                 body: body
             })
             const data = await response.json();
-            console.log(props.collections)
-            props.updateCollections([...props.collections, // TYPE ERROR: props.collections is not iterable
+            console.log(collections)
+            setCollections([...collections, // TYPE ERROR: props.collections is not iterable
             data])
             
             console.log(event.target)
@@ -55,6 +56,23 @@ export default (props) => {
     }
   }
 
+  // show - Update
+  const showCollection = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/collections/${id}`, {
+          method: 'GET',
+          headers: {
+              'Content-type': 'application/json',
+          }
+      })
+      const data = await response.json();
+      const filteredCollections = collections.filter(collection => collection._id !== data._id)
+      setCollections(filteredCollections)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
     // UPDATE
     const updateCollection = async (id) => {
         try {
@@ -63,7 +81,14 @@ export default (props) => {
             headers: {
                 'Content-type': 'application/json'
             },
-            // body: body = error body is not defined
+            body: {
+                'name': {nameInput},
+                'city': {cityInput},
+                'zip': {zipInput},
+                'culture': {cultureInput},
+                'dish': {dishInput},
+                'ruleout': {ruleoutInput}
+            }
         })
             const data = await response.json();
             const filteredCollections = collections.filter(collection => collection._id !== data._id)
@@ -111,18 +136,28 @@ export default (props) => {
             {
                 collections.map(collection => {
                 return (
-                    <li key={collection._id}>{collection.name}
+                    <>
+                    <li key={collection._id}>
+                    {collection.name}
                     <button onClick={
                         (event) => {
                             deleteCollection(collection._id)
                         }
                     }>Delete {collection.name}</button>
+
+                    {/* <Link to='/UpdateRestaurant'> 
                     <button onClick={
                         (event) => {
-                            updateCollection(collection._id)
+                            showCollection(collection._id)
                         }
-                    }>Update {collection.name}</button> <br />
-                    </li> 
+                    }>Update {collection.name}</button> <br /> 
+                    </Link>*/}
+                    </li>  
+                    
+                    {/* <Switch>
+                        <Route path='/UpdateRestaurant' component={UpdateRestaurant} />
+                    </Switch> */}
+                    </>
                 )
                 })
             }
