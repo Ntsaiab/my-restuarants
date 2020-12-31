@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';// need to fix update route and button, create a separate form
-import { Route, Link, Switch } from 'react-router-dom';
+
 
 
 export default (props) => {
@@ -36,7 +36,7 @@ export default (props) => {
             })
             const data = await response.json();
             console.log(collections)
-            setCollections([...collections, // TYPE ERROR: props.collections is not iterable
+            setCollections([...collections, 
             data])
             
             console.log(event.target)
@@ -56,47 +56,6 @@ export default (props) => {
     }
   }
 
-  // show - Update
-  const showCollection = async (id) => {
-    try {
-      const response = await fetch(`http://localhost:3000/collections/${id}`, {
-          method: 'GET',
-          headers: {
-              'Content-type': 'application/json',
-          }
-      })
-      const data = await response.json();
-      const filteredCollections = collections.filter(collection => collection._id !== data._id)
-      setCollections(filteredCollections)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-    // UPDATE
-    const updateCollection = async (id) => {
-        try {
-            const response = await fetch(`http://localhost:3000/collections/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: {
-                'name': {nameInput},
-                'city': {cityInput},
-                'zip': {zipInput},
-                'culture': {cultureInput},
-                'dish': {dishInput},
-                'ruleout': {ruleoutInput}
-            }
-        })
-            const data = await response.json();
-            const filteredCollections = collections.filter(collection => collection._id !== data._id)
-            setCollections(filteredCollections);
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
     // DELETE
     const deleteCollection = async (id) => {
@@ -144,19 +103,7 @@ export default (props) => {
                             deleteCollection(collection._id)
                         }
                     }>Delete {collection.name}</button>
-
-                    {/* <Link to='/UpdateRestaurant'> 
-                    <button onClick={
-                        (event) => {
-                            showCollection(collection._id)
-                        }
-                    }>Update {collection.name}</button> <br /> 
-                    </Link>*/}
-                    </li>  
-                    
-                    {/* <Switch>
-                        <Route path='/UpdateRestaurant' component={UpdateRestaurant} />
-                    </Switch> */}
+                    </li>
                     </>
                 )
                 })

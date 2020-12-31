@@ -1,5 +1,5 @@
 // need to work more on CSS at the least fix the navigation bar
-// also would have to move update button to page where specific restaurant is selected.
+// add click restaurant message for update info.
 import { Route, Link, Switch } from 'react-router-dom';// if have time add authentication 
 import About from './Components/About/About';
 import CommentsForm from './Components/Contact/CommentsForm';

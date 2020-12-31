@@ -61,7 +61,8 @@ const handleFilter = (e) => {
                     </>
                     )
                 }) : 
-                (<div>Search for what you need to ruleout of your meal!</div>)
+                (<div>Search for what you need to ruleout of your meal! <br />
+                Click on Restaurant to update information</div>)
             }
         </>
     )
