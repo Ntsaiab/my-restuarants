@@ -20,7 +20,7 @@ function App() {
       <Link to='/addrestaurant'><h3>Add Restaurant</h3> <br /> </Link>
       <Link to='/contact'><h3>GuestBook</h3> <br /> </Link>
       </nav>
-
+      
       <Switch>
         <Route exact path='/' component={RestaurantInfo} />
         <Route path='/about' component={About} />

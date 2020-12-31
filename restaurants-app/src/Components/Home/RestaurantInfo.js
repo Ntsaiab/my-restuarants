@@ -52,7 +52,7 @@ const handleFilter = (e) => {
                 filteredItems.map(collection => {
                     return (
                         <>
-                    <Link to="/UpdateRestaurant"><div key={collections._id}>
+                    <Link to={`/UpdateRestaurant`}><div key={collections._id}>
                     <h3>Name: {collection.name}, City: {collection.city}, Zip: {collection.zip}, <br />
                     Cuisine: {collection.culture}, Dish: {collection.dish}, Ruleout: {collection.ruleout}</h3>
                     </div>
