@@ -26,7 +26,7 @@ function App() {
         <Route path='/about' component={About} />
         <Route path='/addrestaurant' component={RestaurantForm} />
         <Route path='/contact' component={CommentsForm} />
-        <Route path='/UpdateRestaurant' component={UpdateRestaurant}/>
+        <Route path='/UpdateRestaurant/:id' component={UpdateRestaurant}/>
       </Switch>
       </header>
       <footer><h4>Our Phone: 555-5555     |       Our Email: haveit@yourway.com</h4></footer>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import RestaurantInfo from '../Home/RestaurantInfo'
 
 
@@ -11,31 +11,36 @@ const UpdateRestaurant = (props) => {
     const dishInput = useRef(null);
     const ruleoutInput = useRef(null);
 
-    // const [collections, setCollections] = useState([])
+    const [collection, setCollections] = useState({
+         name : "",
+             city : "",
+             zip : "",
+             culture : "",
+             dish : "",
+             ruleout : ""
+    })
+
     
     
     
-//     // show - Update
-//   const showCollection = async (id) => {
-//     try {
-//       const response = await fetch(`http://localhost:3000/collections/${id}`, {
-//           method: 'GET',
-//           headers: {
-//               'Content-type': 'application/json',
-//           }
-//       })
-//       const collections = await response.json();
-//       console.log(collections[0]._id);
-//       setCollections(collections);
-//       console.log(collections);
+    // show - Update
+  const showCollection = async (id) => {
+    try {
+      const response = await fetch(`http://localhost:3000/collections/${props.match.params.id}`, {
+          method: 'GET',
+          headers: {
+              'Content-type': 'application/json',
+          }
+      })
+      const collection = await response.json();
+      
+      setCollections(collection);
      
-//       const filteredCollections = collections.filter(collection => collection._id !== collections._id)
-//       console.log(filteredCollections);
-//       setCollections(filteredCollections)
-//     } catch (error) {
-//       console.error(error)
-//     }
-//   }
+
+    } catch (error) {
+      console.error(error)
+    }
+  }
 
     // UPDATE
     const updateCollection = async (event) => {
@@ -52,32 +57,29 @@ const UpdateRestaurant = (props) => {
             });// turns js object to json database
             event.currentTarget.reset();
             try{
-                const response = await fetch(`http://localhost:3000/collections/${props.id}`, {
+                const response = await fetch(`http://localhost:3000/collections/${props.match.params.id}`, {
                     method : 'PUT',
                     headers : {
                         'Content-type': 'application/json'
                     },
-                    body: {
-                        "name": {name},
-                        "city": {city},
-                        "zip": {zip},
-                        "culture": {culture},
-                        "dish": {dish},
-                        "ruleout": {ruleout}
-                }
+                    body: body
                 })
             const data = await response.json();
-            console.log(data.id)
-            const filteredCollections = props.collections.filter(collection => collection._id !== data._id)
-            console.log(props.collections)
-            props.collections([...filteredCollections, data])
+            console.log(data._id)
+            // const filteredCollections = props.collections.filter(collection => collection._id !== data._id)
+            // console.log(props.collections)
+            // props.collections([...filteredCollections, data])
         } catch (error) {
             console.error(error)
         }
     }
 
 
+// useEffect
 
+useEffect(() => {
+    showCollection();
+}, [collection])
 
 
 
@@ -88,12 +90,12 @@ const UpdateRestaurant = (props) => {
             <h3>Need to make a change or add a new dish! Update it here!</h3>
             <br />
             <form className="collectionsForm" onSubmit={updateCollection}>
-            <label> Name: <input type="text" ref={nameInput} />{props.name} </label>  
-            <label> City: <input type="text" ref={cityInput} /> {props.city}</label>   
-            <label> Zip: <input type="text" ref={zipInput} />{props.zip} </label> <br />
-            <label> Culture: <input type="text" ref={cultureInput} />{props.culture} </label>  
-            <label> Dish: <input type="text" ref={dishInput} />{props.dish} </label>  
-            <label> Ruleout: <input type="text" ref={ruleoutInput} />{props.ruleout} </label> 
+            <label> Name: <input type="text" ref={nameInput} defaultValue={collection.name}/>{props.name} </label>  
+            <label> City: <input type="text" ref={cityInput} defaultValue={collection.city}/> {props.city}</label>   
+            <label> Zip: <input type="text" ref={zipInput} defaultValue={collection.zip}/>{props.zip} </label> <br />
+            <label> Culture: <input type="text" ref={cultureInput} defaultValue={collection.culture}/>{props.culture} </label>  
+            <label> Dish: <input type="text" ref={dishInput} defaultValue={collection.dish}/>{props.dish} </label>  
+            <label> Ruleout: <input type="text" ref={ruleoutInput} defaultValue={collection.ruleout}/>{props.ruleout} </label> 
                 <input type="submit" value="Update Restaurant Info" />  
             </form><br />
             
