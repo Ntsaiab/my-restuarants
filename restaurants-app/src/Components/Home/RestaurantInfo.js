@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react'; // Need to add code for location button for search results and link to goole maps if have time
-import { Route, Link, Switch } from 'react-router-dom';
+import { useState, useEffect } from 'react'; // Need to add code for location button for search results and link to goole maps if have time
+import { Link } from 'react-router-dom';
 
 
 const PullBackend = (props) => {
     const [collections, setCollections] = useState([]);
     const [filteredItems, setFilteredItems] = useState([]);
-    const searchInput = useRef(null);
+    
     
     const fetchCollections = async () => {
         try {
@@ -52,7 +52,7 @@ const handleFilter = (e) => {
                 filteredItems.map(collection => {
                     return (
                         <>
-                    <Link to={`/UpdateRestaurant/${collection._id}`}><div key={collections._id}>
+                    <Link to={`/UpdateRestaurant/${collection._id}`}><div id="rinfoForm" key={collections._id}>
                     <h3>Name: {collection.name}, City: {collection.city}, Zip: {collection.zip}, <br />
                     Cuisine: {collection.culture}, Dish: {collection.dish}, Ruleout: {collection.ruleout}</h3>
                     </div>

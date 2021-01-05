@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRef, useEffect, useState } from 'react'
-import RestaurantInfo from '../Home/RestaurantInfo'
+
 
 
 const UpdateRestaurant = (props) => {
@@ -12,12 +12,12 @@ const UpdateRestaurant = (props) => {
     const ruleoutInput = useRef(null);
 
     const [collection, setCollections] = useState({
-         name : "",
-             city : "",
-             zip : "",
-             culture : "",
-             dish : "",
-             ruleout : ""
+            name : "",
+            city : "",
+            zip : "",
+            culture : "",
+            dish : "",
+            ruleout : ""
     })
 
     
@@ -78,7 +78,7 @@ const UpdateRestaurant = (props) => {
 // useEffect
 
 useEffect(() => {
-    showCollection();
+    showCollection()
 }, [collection])
 
 
@@ -97,7 +97,9 @@ useEffect(() => {
             <label> Dish: <input type="text" ref={dishInput} defaultValue={collection.dish}/>{props.dish} </label>  
             <label> Ruleout: <input type="text" ref={ruleoutInput} defaultValue={collection.ruleout}/>{props.ruleout} </label> 
                 <input type="submit" value="Update Restaurant Info" />  
-            </form><br />
+               </form><br /> 
+               <a href="https://goo.gl/maps/yRntqZbWT4z6xFxWA" target="_blank" rel="noreferrer"><input type="submit" value="Let's go eat!" /></a>  
+            
             
             {/* {
                 collections.map(collection => {
