@@ -21,19 +21,20 @@ function App() {
           
           <Link  to='/'><h1 id="appName">RESTAURANT APP</h1> <br /> <br /> </Link>
         
-          <Link to='/about'><h3>About US</h3> <br /> </Link>
+          <Link to='/about'><h3>About Us</h3> <br /> </Link>
           <Link to='/addrestaurant'><h3>Add Restaurant</h3> <br /> </Link>
           <Link to='/contact'><h3>GuestBook</h3> <br /> </Link>
       </nav>
      </header> 
-      <Switch>
-        <Route exact path='/' component={RestaurantInfo} />
-        <Route path='/about' component={About} />
-        <Route path='/addrestaurant' component={RestaurantForm} />
-        <Route path='/contact' component={CommentsForm} />
-        <Route path='/UpdateRestaurant/:id' component={UpdateRestaurant}/>
-      </Switch>
-      
+     <main>
+        <Switch>
+          <Route exact path='/' component={RestaurantInfo} />
+          <Route path='/about' component={About} />
+          <Route path='/addrestaurant' component={RestaurantForm} />
+          <Route path='/contact' component={CommentsForm} />
+          <Route path='/UpdateRestaurant/:id' component={UpdateRestaurant}/>
+        </Switch>
+      </main>
       <footer><h4>Our Phone: 555-5555     |       Our Email: haveit@yourway.com</h4></footer>
     </div>
   );
