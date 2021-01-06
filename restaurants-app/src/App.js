@@ -6,7 +6,8 @@ import CommentsForm from './Components/Contact/CommentsForm';
 import RestaurantInfo from './Components/Home/RestaurantInfo';
 import RestaurantForm from './Components/AddRestaurant/RestaurantForm';
 import UpdateRestaurant from './Components/UpdateRestaurant/UpdateRestaurant';
-import { Container, Row, Col } from 'reactstrap';
+
+import { Container, Row, Col, Modal } from 'reactstrap';
 import './App.css';
 
 function App() {
@@ -15,17 +16,16 @@ function App() {
   return (
     <div className="App">
     <header className="App-header">
-      <Container>
-      <Row xs="4">
+     
       <nav>
-      <Col><Link to='/'><h1>RESTAURANT APP</h1> <br /> <br /> </Link></Col>
-      <Col><Link to='/about'><h3>About US</h3> <br /> </Link></Col>
-      <Col><Link to='/addrestaurant'><h3>Add Restaurant</h3> <br /> </Link></Col>
-      <Col><Link to='/contact'><h3>GuestBook</h3> <br /> </Link></Col>
+          
+          <Link  to='/'><h1 id="appName">RESTAURANT APP</h1> <br /> <br /> </Link>
+        
+          <Link to='/about'><h3>About US</h3> <br /> </Link>
+          <Link to='/addrestaurant'><h3>Add Restaurant</h3> <br /> </Link>
+          <Link to='/contact'><h3>GuestBook</h3> <br /> </Link>
       </nav>
-      </Row>
-      </Container>
-
+     </header> 
       <Switch>
         <Route exact path='/' component={RestaurantInfo} />
         <Route path='/about' component={About} />
@@ -33,7 +33,7 @@ function App() {
         <Route path='/contact' component={CommentsForm} />
         <Route path='/UpdateRestaurant/:id' component={UpdateRestaurant}/>
       </Switch>
-      </header>
+      
       <footer><h4>Our Phone: 555-5555     |       Our Email: haveit@yourway.com</h4></footer>
     </div>
   );

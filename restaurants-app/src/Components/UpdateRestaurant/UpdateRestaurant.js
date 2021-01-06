@@ -102,16 +102,11 @@ useEffect(() => {
             
             
             {/* {
-                collections.map(collection => {
+                collection.map(collection => {
                 return (
                     <>
                     <li key={collection._id}>
                     {collection.name}
-                    <button onClick={
-                        (event) => {
-                            updateCollection(collection._id)
-                        }
-                    }>Update {collection.name}</button>
                     </li>
                     </>
                 )

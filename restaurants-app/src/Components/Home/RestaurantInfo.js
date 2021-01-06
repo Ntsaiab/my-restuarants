@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'; // Need to add code for location button for search results and link to goole maps if have time
 import { Link } from 'react-router-dom';
+// import Modal from '../Modal/Modal';
 
 
 const PullBackend = (props) => {
@@ -42,29 +43,32 @@ const handleFilter = (e) => {
 
     return (
         
-        <>
+        <div className="searchForm">
+        {/* <Modal /> */}
             <form>
-                <label> Ruleout: <input onChange= {(e) => handleFilter(e.target.value)} type="text" options=""></input></label>
+                <label> RULEOUT: <input onChange= {(e) => handleFilter(e.target.value)} type="text" options=""></input></label>
                 {/* <input  type='submit'></input> */}
             </form>
+            <div className="deck">
             {
                 filteredItems.length > 1 ? 
                 filteredItems.map(collection => {
                     return (
-                        <>
-                    <Link to={`/UpdateRestaurant/${collection._id}`}><div id="rinfoForm" key={collections._id}>
-                    <h3>Name: {collection.name}, City: {collection.city}, Zip: {collection.zip}, <br />
-                    Cuisine: {collection.culture}, Dish: {collection.dish}, Ruleout: {collection.ruleout}</h3>
+                        <div id="rinfoForm">
+                    <Link to={`/UpdateRestaurant/${collection._id}`}><div  key={collections._id}>
+                    <h3>Name: {collection.name}<br /> City: {collection.city} <br /> Zip: {collection.zip} <br />
+                    Cuisine: {collection.culture} <br /> Dish: {collection.dish} <br /> Ruleout: {collection.ruleout}</h3>
                     </div>
                     </Link>
                     
-                    </>
+                    </div>
                     )
                 }) : 
-                (<div>Search for what you need to ruleout of your meal! <br />
-                Click on Restaurant to update information</div>)
+                (<div> Search for what you need to ruleout of your meal! <br />Can't remember the Restaurant? Food restrictions? No worries! <br />
+                Click on a Restaurant to update information or for directions.</div>)
             }
-        </>
+            </div>
+        </div>
     )
 }
 

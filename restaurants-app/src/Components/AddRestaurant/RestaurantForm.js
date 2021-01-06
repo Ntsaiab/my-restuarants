@@ -79,10 +79,10 @@ export default (props) => {
     }, [])
 
     return (
-        <>
+        <div className="searchForm">
             <h3>Was it good! Add your fav Restaurant location and dish on this page!</h3>
             <br />
-            <form className="collectionsForm" onSubmit={createCollection}>
+            <form  onSubmit={createCollection}>
             <label> Name: <input type="text" ref={nameInput} /> </label>  
             <label> City: <input type="text" ref={cityInput} /> </label>   
             <label> Zip: <input type="text" ref={zipInput} /> </label> <br />
@@ -91,24 +91,25 @@ export default (props) => {
             <label> Ruleout: <input type="text" ref={ruleoutInput} /> </label> 
                 <input type="submit" value="Add A Restaurant" />  
             </form><br />
-            
+            <div className="deck">
             {
                 collections.map(collection => {
                 return (
-                    <>
+                    <div className="colForm">
                     <li key={collection._id}>
-                    {collection.name}
+                    {collection.name} <br /> {collection.city} <br />
                     <button onClick={
                         (event) => {
                             deleteCollection(collection._id)
                         }
                     }>Delete {collection.name}</button>
                     </li>
-                    </>
+                    </div>
                 )
                 })
             }
-        </>
+            </div>
+        </div>
     )
 
 }

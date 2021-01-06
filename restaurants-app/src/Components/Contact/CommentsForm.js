@@ -33,7 +33,7 @@ export default (props) => {
     }
 
     return (
-        <>
+        <div className="searchForm">
             <h3>We would love to hear from you! <br/> Have a thought, comment or idea? <br />Please share it with us, we will try to respond!</h3> <br />
             <form className="commentForm" onSubmit={createComment}>
             <label> Name: <input type="text" ref={nameInput} /></label>  <br />
@@ -43,6 +43,6 @@ export default (props) => {
             </form><br />
 
             
-        </>
+        </div>
     )
 }

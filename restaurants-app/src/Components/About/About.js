@@ -2,7 +2,7 @@ import React from 'react'
 
 const About = () => {
     return (
-        <div>
+        <div className="about">
             <h2>About US</h2>
             <h4><p>WELCOME!<br /> </p>
                     <p>To your culinary collection,<br /> Have you ever wondered, "What restaurant was it that I had that amazing dish?" or "Where had that vegan, gluten free, dairy free fetuccini alfredo?"</p>
