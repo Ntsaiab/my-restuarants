@@ -22,7 +22,7 @@ function App() {
           
           <Link  to='/'><h1 id="appName">RESTAURANT APP</h1> <br /> <br /> </Link>
         
-          <Link to='/about'><h3>About Us</h3> <br /> </Link>
+          <Link to='/about'><h3>AboutUs</h3> <br /> </Link>
           <Link to='/addrestaurant'><h3>Add Restaurant</h3> <br /> </Link>
           <Link to='/contact'><h3>GuestBook</h3> <br /> </Link>
           <Link to='/reglogin'><h3>Register/Log In</h3> <br /> </Link>

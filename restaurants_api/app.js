@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 const collectionController = require('./controllers/collections');
 const commentsController = require('./controllers/comments')
 const MONGOURI = process.env.MONGODB_URI;
-const User = require('./models/user')
+const User = require('./models/user');
 
 const SECRET = 'thisisthebestlifeeversomanygoodthingsyettobedonewiththesehandsofmine'
 

@@ -10,9 +10,10 @@ const auth = async (req, res, next) => {
     console.log(req.headers)
     if (authorization) {
         const token = authorization.split(' ')[1];
+        console.log(token);
         try {
             const payload = await jwt.verify(token, SECRET )
-            req.user = payload
+            req.user = payload;
             next();// authorized function for permissions
         } catch (error) {
             res.status(400).json(error);
@@ -33,7 +34,7 @@ restaurantInfo.get('/', async (req, res) => {
 })
 
 // DELETE
-restaurantInfo.delete('/:id', auth, async (req, res) => {
+restaurantInfo.delete('/:id', async (req, res) => {
     try {
         const deleteRestaurantInfo = await RestaurantInfo.findByIdAndRemove(req.params.id);
         res.status(200).json(deleteRestaurantInfo);
@@ -43,7 +44,7 @@ restaurantInfo.delete('/:id', auth, async (req, res) => {
 })
 
 // UPDATE
-restaurantInfo.put('/:id', auth, async (req, res) => {
+restaurantInfo.put('/:id', async (req, res) => {
     try {
         const updateRestaurantInfo = await RestaurantInfo.findByIdAndUpdate(
             req.params.id,

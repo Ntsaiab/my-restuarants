@@ -23,8 +23,8 @@
 nav {
   position: absolute;
   top: 10px;
-  left: 10px;
-  right: 10px;
+  left: 500px;
+  right: 500px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -51,6 +51,12 @@ nav a {
   text-decoration: none;
  
 }
+nav a:hover {
+  background-color: #8aabec;
+  color: darkorchid;
+  transition: scale(1);
+  
+}
 main{
   margin-top: 150px;
 }
@@ -59,6 +65,7 @@ main{
   font-size: x-large;
   color:purple;
   border: purple 5px solid;
+  box-shadow: 15px 15px 15px darkmagenta;
   border-radius: 10px;
   width: 60%
 }
@@ -74,6 +81,7 @@ main{
   font-size: x-large;
   color:purple;
   border: purple 5px solid;
+  box-shadow: 15px 15px 15px darkmagenta;
   border-radius: 10px;
   padding: 10px;
   
