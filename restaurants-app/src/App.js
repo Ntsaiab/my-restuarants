@@ -6,12 +6,13 @@ import CommentsForm from './Components/Contact/CommentsForm';
 import RestaurantInfo from './Components/Home/RestaurantInfo';
 import RestaurantForm from './Components/AddRestaurant/RestaurantForm';
 import UpdateRestaurant from './Components/UpdateRestaurant/UpdateRestaurant';
+import Reglogin from './Components/Login/Reglogin';
 
-import { Container, Row, Col, Modal } from 'reactstrap';
+
 import './App.css';
 
 function App() {
-  
+ 
 
   return (
     <div className="App">
@@ -24,6 +25,7 @@ function App() {
           <Link to='/about'><h3>About Us</h3> <br /> </Link>
           <Link to='/addrestaurant'><h3>Add Restaurant</h3> <br /> </Link>
           <Link to='/contact'><h3>GuestBook</h3> <br /> </Link>
+          <Link to='/reglogin'><h3>Register/Log In</h3> <br /> </Link>
       </nav>
      </header> 
      <main>
@@ -32,6 +34,7 @@ function App() {
           <Route path='/about' component={About} />
           <Route path='/addrestaurant' component={RestaurantForm} />
           <Route path='/contact' component={CommentsForm} />
+          <Route path='/reglogin' component={Reglogin} />
           <Route path='/UpdateRestaurant/:id' component={UpdateRestaurant}/>
         </Switch>
       </main>

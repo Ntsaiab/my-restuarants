@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRef, useEffect, useState } from 'react'
-
+import Reglogin from '../Login/Reglogin'
 
 
 const UpdateRestaurant = (props) => {
@@ -10,6 +10,8 @@ const UpdateRestaurant = (props) => {
     const cultureInput = useRef(null);
     const dishInput = useRef(null);
     const ruleoutInput = useRef(null);
+
+    const token = props.location.hash;
 
     const [collection, setCollections] = useState({
             name : "",
@@ -60,7 +62,8 @@ const UpdateRestaurant = (props) => {
                 const response = await fetch(`http://localhost:3000/collections/${props.match.params.id}`, {
                     method : 'PUT',
                     headers : {
-                        'Content-type': 'application/json'
+                        'Content-type': 'application/json',
+                        'Authorization': token
                     },
                     body: body
                 })
@@ -85,7 +88,7 @@ useEffect(() => {
 
 
     return (
-        <div>
+        <div className="searchForm">
             <h2>UPDATE INFO</h2>
             <h3>Need to make a change or add a new dish! Update it here!</h3>
             <br />

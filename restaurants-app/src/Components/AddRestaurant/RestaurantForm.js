@@ -10,8 +10,11 @@ export default (props) => {
     const dishInput = useRef(null);
     const ruleoutInput = useRef(null);
 
-
+    const token = props.location.hash;
+    
     const [collections, setCollections] = useState([])
+
+    
 
    // CREATE
     const createCollection = async (event) => {
@@ -64,6 +67,7 @@ export default (props) => {
                 method: 'DELETE',
                 headers: {
                     'Content-type': 'application/json',
+                    'Authorization': token
                 }
             })
             const data = await response.json();
@@ -73,6 +77,8 @@ export default (props) => {
             console.error(error)
         }
     }
+
+    
     
     useEffect(() =>{
     fetchCollections();
